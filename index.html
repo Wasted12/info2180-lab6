@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Dictionary</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+ </head>
+
+ <body>
+	 <input id="text" type="text" placeholder="Search..." required>
+  <input id="butt" type="button" value="Search">
+ </body>
+ <script type="text/javascript">
+  var srch = document.getElementById('butt');
+  srch.addEventListener('click', function(){
+  var req = new XMLHttpRequest();
+  req.open('Get', 'request.php?q=definition');
+  req.onload = function(){
+	  if (req.status === 200){
+		  alert( req.responseText);
+		  }
+		  else{
+			  alert('Request failed.' + req.status);
+			  }
+	  };
+  req.send();
+  });
+ </script>
+</html>
