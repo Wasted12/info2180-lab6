@@ -4,22 +4,24 @@
   <meta charset="utf-8">
   <title>Dictionary</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-
  </head>
-
  <body>
+  <div style="border-width: 2px; height: 90px; border-style: solid; border-color: black; background-color: red;"><h1>Web Dictionary</h1></div></br></br>
 	 <input id="text" type="text" placeholder="Search..." required>
   <input id="butt" type="button" value="Search">
+  </br></br>
+  <div id="result"><strong>Result</strong></div>
  </body>
  <script type="text/javascript">
   var srch = document.getElementById('butt');
+  var inp = document.getElementById('text');
+  var result = document.getElementById('result');
   srch.addEventListener('click', function(){
   var req = new XMLHttpRequest();
-  req.open('Get', 'request.php?q=definition');
+  req.open('Get', 'request.php?q=' + inp.value);
   req.onload = function(){
 	  if (req.status === 200){
-		  alert( req.responseText);
+		  result.innerHTML = req.responseText;
 		  }
 		  else{
 			  alert('Request failed.' + req.status);
